@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { ArticlesComponent } from './articles/articles/articles.component';
-import { CoursesComponent } from './courses/courses/courses.component';
 import { SliderComponent } from './home/slider/slider.component';
 import { ProductGridComponent } from './home/product-grid/product-grid.component';
 import { BlogSectionComponent } from './home/blog-section/blog-section.component';
@@ -23,7 +22,6 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     AppComponent,
     HomePageComponent,
     ArticlesComponent,
-    CoursesComponent,
     SliderComponent,
     ProductGridComponent,
     BlogSectionComponent,
