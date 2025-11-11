@@ -1,0 +1,74 @@
+<main class="sign-up">
+  <div class="sign-up__container">
+    <div class="sign-up__image">
+      <svg class="chart" viewBox="0 0 800 960" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="sign-up__content">
+      <header class="sign-up__header">
+        <h1 class="sign-up__title">{{ isSignUp ? 'ثبت نام' : 'ورود' }}</h1>
+        <p class="sign-up__descr">{{ isSignUp ? 'خوش آمدید، لطفا حساب کاربری خود را ثبت کنید.' : 'لطفا وارد حساب کاربری خود شوید.' }}</p>
+      </header>
+
+      <form [formGroup]="signupForm" (ngSubmit)="submit()" class="sign-up__form form">
+
+  
+
+
+        <!-- Mobile Field -->
+        <div class="form__row">
+          <div class="input">
+            <div class="input__container">
+              <input class="input__field" id="mobile" placeholder="mobile" required type="text"
+                formControlName="mobile" />
+              <label class="input__label" for="mobile">موبایل</label>
+              <div
+                *ngIf="signupForm.get('mobile')?.invalid && (signupForm.get('mobile')?.touched || signupForm.get('mobile')?.dirty)"
+                class="error">
+                شماره موبایل باید 11 رقم و فقط شامل عدد باشد
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- OTP Field -->
+        <div class="form__row form__row--two">
+          <div class="input form__inline-input">
+            <div class="input__container">
+              <input class="input__field" id="code" placeholder="code" type="text" formControlName="code" />
+              <label class="input__label" for="code">کد</label>
+            </div>
+          </div>
+
+          <div class="input form__inline-input">
+            <div class="input__container">
+              <button class="input__field btn btn-send-code" type="button"
+                [disabled]="!isMobileValid || checkingMobile || otpTimer > 0" (click)="sendOtpCode()">
+                {{ otpButtonText }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form__row">
+          <div class="component component--primary form__button">
+            <button type="submit" class="btn btn--regular" [disabled]="signupForm.invalid || !formValid">
+              {{ isSignUp ? 'ثبت نام' : 'ورود' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Toggle Form -->
+        <div class="form__row sign-up__sign">
+          <span *ngIf="isSignUp">
+            قبلاً حساب کاربری دارید؟ <a href="#" (click)="toggleForm($event)">ورود</a>
+          </span>
+          <span *ngIf="!isSignUp">
+            حساب کاربری ندارید؟ <a href="#" (click)="toggleForm($event)">ثبت نام</a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
